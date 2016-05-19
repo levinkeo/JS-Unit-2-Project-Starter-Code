@@ -15,14 +15,15 @@ var authentication = {
     console.log(ts);
     return CryptoJS.MD5(Date.now()+ privateKey+ publicKey).toString()
   },
-  username: ""
+  private_key: "",
+  public_key: ""
 
 }
 
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json";
 var article1;
 url += '?' + $.param({
-  'api-key': "457327e065144caaa20e42109891b60f"
+  'api-key': ""
 });
 function findGoldilocksImg(articleAllMedia){
       for (var i=0; i < articleAllMedia.length; i++) {
