@@ -1,7 +1,7 @@
 // MARVEL //
 
 var public-key = "";
-var private-key = "";
+var private-key = "fff";
 
 // NYT //
 

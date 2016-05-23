@@ -235,3 +235,71 @@ nav ul ul li {
   text-align: right;
   color: #097FB2;
 }
+
+
+/* CUSTOM STYLES */
+
+body {
+  font-family: 'Cubano', sans-serif;
+}
+
+.container {
+  clear: left;
+}
+
+@font-face {
+  font-family: 'Cubano';
+  src: url('./Cubano copy/webfonts/cubano-regular-webfont.eot'); 
+  src: url('./Cubano copy/webfonts/cubano-regular-webfont.woff') format('woff'),
+       url('./Cubano copy/webfonts/cubano-regular-webfont.ttf')  format('truetype'),
+       url('./Cubano copy/webfonts/cubano-regular-webfont.svg') format('svg'); 
+}
+
+.results {
+  margin-top: 100px;
+  list-style: none;
+  padding: 0;
+  font-family: 'Cubano', sans-serif;
+  max-width: 30%;
+  display: inline-block;
+  float: left;
+
+}
+
+.results a {
+  font-size: 2em;
+  text-decoration: none;
+  color: red;
+}
+
+.results li {
+  display: inline-block;
+  display: block;
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 50px;
+
+}
+
+.results div {
+  width: 75%;
+  margin: 0 auto;
+  border-right: solid 3px #ccc;
+  border-left: solid 3px #ccc;
+  padding: 0 25px;
+  -webkit-box-shadow: 0px 15px 55px -20px #000;
+  transition: all 0.3s;
+}
+
+.results div:hover {
+  -webkit-box-shadow: 0px 10px 30px -20px #000;
+  cursor: pointer;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.results img {
+  border-radius: 90px;
+  margin-right: 15px;
+}
