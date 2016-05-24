@@ -255,6 +255,11 @@ body {
        url('./Cubano copy/webfonts/cubano-regular-webfont.svg') format('svg'); 
 }
 
+.results-container {
+  margin: 0 auto;
+  width: 95%;
+}
+
 .results {
   margin-top: 100px;
   list-style: none;
@@ -263,13 +268,40 @@ body {
   max-width: 30%;
   display: inline-block;
   float: left;
+  background: white;
+  text-overflow: ellipsis;
+}
 
+button.revealAuthors {
+  float: left;
+  margin-top: 75px;
+  position: fixed;
+  z-index: 5;
+}
+
+.authors {
+  position: relative;
+  left: -1000px;
+  transition: all 1s;
+  width: 0%;
+}
+
+.authors.slideIn {
+  left: 0px;
+  display: inline-block;
+  width: 100%;
+}
+
+.results.slideOut {
+  display: none;
 }
 
 .results a {
   font-size: 2em;
   text-decoration: none;
   color: red;
+  display: block;
+  text-align: center;
 }
 
 .results li {
@@ -287,7 +319,7 @@ body {
   margin: 0 auto;
   border-right: solid 3px #ccc;
   border-left: solid 3px #ccc;
-  padding: 0 25px;
+  padding: 10px 25px;
   -webkit-box-shadow: 0px 15px 55px -20px #000;
   transition: all 0.3s;
 }
@@ -301,5 +333,36 @@ body {
 
 .results img {
   border-radius: 90px;
-  margin-right: 15px;
+  margin-right: 0px;
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+}
+
+.results.authors {
+  font-size: 0.75em;
+  position: relative;
+}
+
+.results.authors a {
+  font-size: 1.2em;
+}
+
+.results.authors h1 {
+  font-size: 5em;
+  position: absolute;
+  top: 200px;
+  left: 5px;
+  z-index: 4;
+  transform: rotate(-90deg);
+  /* Safari */
+  -webkit-transform: rotate(-90deg);
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+  /* IE */
+  -ms-transform: rotate(-90deg);
+  /* Opera */
+  -o-transform: rotate(-90deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }

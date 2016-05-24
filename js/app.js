@@ -26,19 +26,19 @@ var authentication = {
     hashArr= [ts, CryptoJS.MD5(ts + privateKey + publicKey).toString()];
     return hashArr;
   },
-  private_key: "",
-  public_key: ""
+  private_key: "PRIVATE KEY GOES HERE",
+  public_key: "PUBLIC KEY GOES HERE"
 
 }
 
 
 /* Marvel Request */
 
-var marvelURLParams = "?apikey="+ authentication.public_key + "&hash=" + authentication.hash('', '')[1] + "&ts=" + String(hashArr[0]).split('&_')[0];
+var marvelURLParams = "?apikey="+ authentication.public_key + "&hash=" + authentication.hash(authentication.private_key, authentication.public_key)[1] + "&ts=" + String(hashArr[0]).split('&_')[0];
 var marvelResponse;
-function makeMarvelRequest(baseUrl, whereTo){
+function makeMarvelRequest(baseUrl, whereTo, offset){
   $.ajax({
-    url: baseUrl + marvelURLParams.split('&_')[0],
+    url: baseUrl + marvelURLParams.split('&_')[0] + offset,
     method: 'GET',
     dataType: 'json'
   }).done(function(data) {
@@ -69,7 +69,7 @@ function makeMarvelRequest(baseUrl, whereTo){
                             + article.link
                             + '">' 
                             + article.title 
-                            +'</a>: ' 
+                            +'</a>' 
                             + articleByline 
                             + '</div></li>');
        } 
@@ -81,8 +81,10 @@ function makeMarvelRequest(baseUrl, whereTo){
   })
 };
 
-makeMarvelRequest("http://gateway.marvel.com:80/v1/public/characters",".results:first-of-type");
-makeMarvelRequest("http://gateway.marvel.com:80/v1/public/events", ".results:nth-of-type(2)");
+makeMarvelRequest("http://gateway.marvel.com:80/v1/public/characters",".results:first-of-type ul", '');
+makeMarvelRequest("http://gateway.marvel.com:80/v1/public/events", ".results:nth-of-type(2) ul", '');
+makeMarvelRequest("http://gateway.marvel.com:80/v1/public/events", ".results:nth-of-type(3) ul", '&offset=20');
+makeMarvelRequest("http://gateway.marvel.com:80/v1/public/events", ".results:nth-of-type(4) ul", '&offset=30');
 
 /*********************************************************************************
                 New York Times API | http://developer.nytimes.com/
@@ -137,6 +139,12 @@ function Agg(title, byline, link, multimedia) {
   this.wrapper = "<div class='article'>"
 }
 
+$(function(){
+  $('.revealAuthors').on('click', function(){
+    $('.authors').toggleClass('slideIn');
+    $('.results:nth-of-type(4)').toggleClass('slideOut')
+  })
+});
 
 
 // insert jquery dynamically for testing: 
